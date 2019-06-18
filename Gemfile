@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.3.1'
 # Use jQuery
 gem 'jquery-rails'
+# Use devise
+gem 'devise', '~> 4.6'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
