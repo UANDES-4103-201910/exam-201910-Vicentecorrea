@@ -1,1 +1,8 @@
-<%= brand.name %>
+<div class="container mt-3">
+  <h2>Productos with brand "<b><%= brand.name %></b>"</h2>
+  <div class="d-flex flex-column mb-3">
+    <% brand.get_my_products.each do |product| %>
+      <div class="p-2 bg-warning"><%= product.model %> <%= link_to 'View product', product %></div>
+    <% end %>
+  </div>
+</div>
