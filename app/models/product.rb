@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   has_and_belongs_to_many :orders
+  has_one :brand
 
-  validates :brand, :model, :price, :short_description, :long_description, presence: true
+  validates :model, :price, :short_description, :long_description, presence: true
 end

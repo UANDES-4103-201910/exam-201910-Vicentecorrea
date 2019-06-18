@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HomeExam2019</title>
+    <%#= csrf_meta_tags %>
+    <%#= csp_meta_tag %>
+
+    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body>
+<div class="container">
+  <!-- Nav pills -->
+  <ul class="nav nav-pills" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="#handsets">Handsets</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#prepayOptions">Prepay Options</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#subscriptions">Subscriptions</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="handsets" class="container tab-pane active"><br>
+      <div class="container-fluid">
+        <!-- Nav pills -->
+        <div class="row">
+          <div class="col-2">
+            <ul class="nav nav-pills flex-column" role="tablist">
+              <% c = 1 %>
+              <% @brands.each do |brand| %>
+                <li class="nav-item">
+                  <% if c <= 1 %>
+                    <a class="nav-link active" data-toggle="pill" href="#product-brand-<%= brand.id %>"><%= brand.name %></a>
+                  <% else %>
+                    <a class="nav-link" data-toggle="pill" href="#product-brand-<%= brand.id %>"><%= brand.name %></a>
+                  <% end %>
+                </li>
+                <% c += 1 %>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-10">
+            <div class="tab-content">
+              <% c = 1 %>
+              <% @brands.each do |brand| %>
+                <% if c <= 1 %>
+                  <div id="product-brand-<%= brand.id %>" class="container tab-pane active">
+                    <%= render "home/product_view", brand: brand %>
+                  </div>
+                <% else %>
+                  <div id="product-brand-<%= brand.id %>"  class="container tab-pane">
+                    <%= render "home/product_view", brand: brand %>
+                  </div>
+                <% end %>
+                <% c += 1 %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="prepayOptions" class="container tab-pane fade"><br>
+    </div>
+    <div id="subscriptions" class="container tab-pane fade"><br>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_135659) do
+ActiveRecord::Schema.define(version: 2019_06_18_152529) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "phone"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 2019_06_18_135659) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -40,7 +46,6 @@ ActiveRecord::Schema.define(version: 2019_06_18_135659) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "brand"
     t.string "model"
     t.string "variant"
     t.integer "price"
@@ -48,7 +53,9 @@ ActiveRecord::Schema.define(version: 2019_06_18_135659) do
     t.text "long_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
+    t.integer "brand_id"
+    t.string "product_type"
+    t.index ["brand_id"], name: "index_products_on_brand_id"
   end
 
   create_table "users", force: :cascade do |t|
